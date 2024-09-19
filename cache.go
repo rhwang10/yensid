@@ -1,7 +1,5 @@
 package cache
 
-import "fmt"
-
 type Node struct {
 	children map[string]*Node
 	value    interface{}
@@ -102,22 +100,4 @@ func (c *Cache) search(key string, root *Node) *Node {
 	}
 
 	return nil
-}
-
-func cache() {
-	cache := NewCache()
-	cache.Put("a", "hello world")
-	cache.Put("ab", "hi again")
-	cache.Put("abcd", "hi one more time")
-	cache.Put("abcd", "hihi")
-
-	toFind := []string{"a", "ab", "abcd", "abc", "abcd"}
-	for _, key := range toFind {
-		value, found := cache.Get(key)
-		if found {
-			fmt.Println("Found value:", value)
-		} else {
-			fmt.Println("Value not found")
-		}
-	}
 }
